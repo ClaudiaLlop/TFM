@@ -200,5 +200,5 @@ features = rbind(features, sample_features78[[1]])
 
 #########################################################
 
-write.csv(features, "/Users/.../TFM/data/features/total_features_update.csv")
+write.csv(features, "/Users/.../TFM/data/features/total_features.csv")
 
