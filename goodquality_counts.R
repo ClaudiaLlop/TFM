@@ -91,7 +91,7 @@ edited_uni_plot <- function (x, symb = FALSE, quan = 1/2, alpha = 0.025)
 
 #########################################################
 
-# As input we need the features matrix from the processed BAM files
+# As input we need the features matrix extracted with Cellity extract_features
 features=read.csv("/Users/.../TFM/data/features/total_features.csv", row.names = 1)
 colnames(features) = c("Mapped %", "Intergenic %", "Intronic %", "Exonic %", "Ambigious %", "#Detected genes",
                        "Cell-to-mean", "Transcriptome variance",
@@ -120,8 +120,9 @@ for (i in 1:ncol(features_scaled)) {
 
 residuals_df <- as.data.frame(residuals_list)
 colnames(residuals_df) = colnames(features)
-
 #write.csv(residuals_df, "/Users/.../TFM/data/residuals/regpc3_not5.csv")
+
+## Assessing cell quality
 annot = edited_assess_cell_quality_PCA(residuals_df, quan=1, alpha=0.025)
 goodcells = annot$cell[which(annot$quality == 1)]
 #write.csv(goodcells, "/Users/.../TFM/data/goodqualitycells.csv")
