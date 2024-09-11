@@ -43,7 +43,7 @@ seu.object[["RNA"]] <- split(seu.object[["RNA"]], f = seu.object$sample)
 seu.object[["percent.mt"]] <- PercentageFeatureSet(seu.object, pattern = "^mt-")
 
 nHVG<-2000
-seu.object <- SCTransform(seu.object, method = "glmGamPoi", vst.flavor ="v2", vars.to.regress ="percent.mt", variable.features.n = nHVG)
+seu.object <- SCTransform(seu.object, method = "glmGamPoi", vst.flavor ="v2", variable.features.n = nHVG)
 seu.object <- RunPCA(seu.object, npcs = 30, verbose = F)
 
 
